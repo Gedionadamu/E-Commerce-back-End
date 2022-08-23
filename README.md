@@ -8,6 +8,15 @@
 ## Discription
 
   Its a back end orm that does CRUD operation using with associated data.
+  ```md
+
+Adding my database name, MySQL username, and MySQL password to an environment variable file
+will connect to a database using Sequelize, and by using the schema and seed commands i can seed the db. After starting the server
+you are able to use the GET routes using insomnia to get data in JSON file format and using POST, PUT and Delete routes in insomnia
+you can successfully modify create , update and delete date in the database. 
+
+
+```
 
 
 # Table of contents
