@@ -7,8 +7,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
-  try {
-    const dbProductData = await Product.findAll({
+   Product.findAll({
         attributes: [
             'id',
             'product_name',
@@ -25,19 +24,16 @@ router.get('/', (req, res) => {
                 attributes: ['id', 'tag_name']
             }
         ]
-    });
-    res.status(200).json(dbProductData);
-} catch (err) {
-    res.status(500).json(err);
-}
+    }).then((Product)=>res.send(Product));
+    
+
 });
 
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
-  try {
-    const dbProductData = await Product.findOne({
+   Product.findOne({
         where: {
             id: req.params.id
         },
@@ -57,11 +53,9 @@ router.get('/:id', (req, res) => {
                 attributes: ['id', 'tag_name']
             }
         ]
-    });
-    res.status(200).json(dbProductData);
-} catch (err) {
-    res.status(500).json(err);
-}
+    }).then((Product)=>res.json(Product));
+   
+
 });
 
 // create new product
@@ -89,7 +83,7 @@ router.post('/', (req, res) => {
       // if no product tags, just respond
       res.status(200).json(product);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then((productTagIds) => res.json(productTagIds))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);

@@ -7,8 +7,7 @@ router.get('/', (req, res) => {
   // find all tags
   // be sure to include its associated Product data
 
- try {
-        const dbTagData = await Tag.findAll({
+ Tag.findAll({
             attributes: [
                 'id', 'tag_name'
             ],
@@ -24,18 +23,15 @@ router.get('/', (req, res) => {
                     ]
                 }
             ]
-        });
-        res.status(200).json(dbTagData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
+        }).then((Tag)=>res.json(Tag));
+        
+   
 });
 
 router.get('/:id', (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
-  try {
-    const dbTagData = await Tag.findOne({
+   Tag.findOne({
         where: {
             id: req.params.id
         },
@@ -55,51 +51,42 @@ router.get('/:id', (req, res) => {
 
             }
         ]
-    });
-    res.status(200).json(dbTagData);
+    }).then((Tag)=>res.json(Tag));
+    
 
-} catch (err) {
-    res.status(500).json(err);
-}
+
 });
 
 router.post('/', (req, res) => {
   // create a new tag
-  try {
-    const dbTagData = await Tag.create({tag_name: req.body.tag_name});
-    res.status(200).json(dbTagData);
-} catch (err) {
-    res.status(500).json(err);
-}
+ Tag.create({tag_name: req.body.tag_name}).then((Tag)=>res.json(Tag));
+    
+
 });
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-  try {
-    const dbTagData = await Tag.update(req.body, {
+  
+     Tag.update(req.body, {
         where: {
             id: req.params.id
         }
-    });
-    res.status(200).json(dbTagData);
-} catch (err) {
-    res.status(500).json(err);
-}
+    }).then((Tag)=>res.json(Tag));
+    
+
 
 });
 
 router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
-  try {
-    const dbTagData = await Tag.destroy({
+ 
+    Tag.destroy({
         where: {
             id: req.params.id
         }
-    });
-    res.status(200).json(dbTagData);
-} catch (err) {
-    res.status(500).json(err);
-}
+    }).then((Tag)=>res.json(Tag));
+    
+
 });
 
 
