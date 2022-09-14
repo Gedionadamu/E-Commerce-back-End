@@ -17,7 +17,7 @@ you can successfully modify create , update and delete date in the database.
 
 
 ```
-
+Using insomnia you can create crud opration on the database. These CRUD operation can be done using ID, Catagory, and tag. 
 
 # Table of contents
 
@@ -35,7 +35,13 @@ you can successfully modify create , update and delete date in the database.
 # How To Use.
 
 To install necessary dependencies, run the following command:
-  Using insomnia you can create crud opration on the database. These CRUD operation can be done using ID, Catagory, and tag. 
+
+first you will need to create Mysql database called ecommerce_db.
+Then you will have to run your seed by using the "npm run seed" and this will seed your database.
+Then you Can start your server by using the "nom start" command to start your server. 
+  
+  Here blow is a demonstration of the app :
+  https://www.youtube.com/watch?v=6oU307lc2gs
 
 # License
 
